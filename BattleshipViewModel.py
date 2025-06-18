@@ -1,8 +1,8 @@
 import RPi.GPIO as GPIO
 from BattleshipModel import Game, Player
 
-green = []
-red   = []
+green = [6, 13,14, 26, 21, 24, 19, 16, 20]
+red   = [27, 22, 17, 5, 12, 25, 4, 23, 18]
 all   = green + red
 
 
