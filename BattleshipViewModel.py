@@ -41,7 +41,7 @@ class BattleshipViewModel:
             GPIO.output(red[idx], GPIO.LOW)
 
     def updateAllLeds(self, board, player):
-        if player_name:
+        if player.name:
             print(f"Updating LEDs to show {player.name}'s board:")
         else:
             print("Updating LEDs to show board:")
