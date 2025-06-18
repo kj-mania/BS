@@ -40,9 +40,9 @@ class BattleshipViewModel:
             GPIO.output(green[idx], GPIO.LOW)
             GPIO.output(red[idx], GPIO.LOW)
 
-    def updateAllLeds(self, board, player_name=None):
+    def updateAllLeds(self, board, player):
         if player_name:
-            print(f"Updating LEDs to show {player_name}'s board:")
+            print(f"Updating LEDs to show {player.name}'s board:")
         else:
             print("Updating LEDs to show board:")
         for row in board:
@@ -77,7 +77,7 @@ class BattleshipViewModel:
         while True:
             attacker = self.game.players[self.game.turn]
             defender = self.game.players[1 - self.game.turn]
-            self.updateAllLeds(defender.board)
+            self.updateAllLeds(defender.board, defender)
             coords = input(f"{attacker.name}, enter target as 'x y': ")
             x, y = map(int, coords.split())
             hit, win = self.game.guess(x, y)
