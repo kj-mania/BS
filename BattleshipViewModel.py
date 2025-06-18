@@ -1,9 +1,9 @@
 import RPi.GPIO as GPIO
 from BattleshipModel import Game, Player
 
-green = [6, 13,14, 26, 21, 24, 19, 16, 20]
-red   = [27, 22, 17, 5, 12, 25, 4, 23, 18]
-all   = green + red
+green = [27, 22, 17, 5, 12, 25, 4, 23, 18]
+red   = [6, 13,14, 26, 21, 24, 19, 16, 20]
+all = green + red
 
 
 def pIndex(x:int, y:int) -> int:
@@ -76,13 +76,14 @@ class BattleshipViewModel:
 
         while True:
             attacker = self.game.players[self.game.turn]
-            self.updateAllLeds(attacker.board)
+            defender = self.game.players[1 - self.game.turn]
+            self.updateAllLeds(defender.board)
             coords = input(f"{attacker.name}, enter target as 'x y': ")
             x, y = map(int, coords.split())
             hit, win = self.game.guess(x, y)
 
             if hit:
-                print(f"{attacker.name} hit at ({x}, {y})")
+                print(f"{attacker.name} hit {defender.name} at ({x}, {y})")
 
             self.updateLed(x, y, hit)
 
