@@ -40,24 +40,24 @@ class BattleshipViewModel:
             GPIO.output(green[idx], GPIO.LOW)
             GPIO.output(red[idx], GPIO.LOW)
 
-def updateAllLeds(self, board, player_name=None):
-    if player_name:
-        print(f"Updating LEDs to show {player_name}'s board:")
-    else:
-        print("Updating LEDs to show board:")
-    for row in board:
-        print(row)
-    for q in range(3):
-        for r in range(3):
-            idx = pIndex(q, r)
-            GPIO.output(green[idx], GPIO.LOW)
-            GPIO.output(red[idx], GPIO.LOW)
-            if board[q][r] == -1:
-                print(f"LED at ({q},{r}) set to RED (hit)") #debug
-                GPIO.output(red[idx], GPIO.HIGH)
-            elif board[q][r] == 2:
-                print(f"LED at ({q},{r}) set to GREEN (miss)") #debug
-                GPIO.output(green[idx], GPIO.HIGH)
+    def updateAllLeds(self, board, player_name=None):
+        if player_name:
+            print(f"Updating LEDs to show {player_name}'s board:")
+        else:
+            print("Updating LEDs to show board:")
+        for row in board:
+            print(row)
+        for q in range(3):
+            for r in range(3):
+                idx = pIndex(q, r)
+                GPIO.output(green[idx], GPIO.LOW)
+                GPIO.output(red[idx], GPIO.LOW)
+                if board[q][r] == -1:
+                    print(f"LED at ({q},{r}) set to RED (hit)") #debug
+                    GPIO.output(red[idx], GPIO.HIGH)
+                elif board[q][r] == 2:
+                    print(f"LED at ({q},{r}) set to GREEN (miss)") #debug
+                    GPIO.output(green[idx], GPIO.HIGH)
 
     def updateLed(self, x: int, y: int, hit: bool):
         idx = pIndex(x, y)
