@@ -80,6 +80,18 @@ class BattleshipViewModel:
 
             if win:
                 print(f"{attacker.name} wins")  
+                break
+
+    def cleanup(self):
+        GPIO.cleanup()
+
+def main():
+    vm = BattleshipViewModel()
+    try:
+        vm.play()
+    except:
+        raise Exception("allan broke something")
+    finally:
         vm.cleanup()
 
 main()
