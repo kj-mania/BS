@@ -95,13 +95,8 @@ class BattleshipViewModel:
 
             if hit:
                 print(f"RESULT: {attacker.name} HIT {defender.name} @ ({x}, {y})")
-                if sunk:
-                    print(f"RESULT: {attacker.name} SUNK a ship on {defender.name} board!")
-                    GPIO.output(buzzer, GPIO.HIGH)
-                    GPIO.output(buzzer, GPIO.LOW)
             else:
                 print(f"RESULT: {attacker.name} MISSED {defender.name} @ ({x}, {y})")
-            
             
             self.updateAllLeds(defender.board, defender)
 
