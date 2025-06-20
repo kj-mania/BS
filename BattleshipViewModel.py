@@ -95,6 +95,7 @@ class BattleshipViewModel:
 
             if hit:
                 print(f"RESULT: {attacker.name} HIT {defender.name} @ ({x}, {y})")
+                GPIO.output(buzzer, GPIO.HIGH) #debug
             else:
                 print(f"RESULT: {attacker.name} MISSED {defender.name} @ ({x}, {y})")
             
