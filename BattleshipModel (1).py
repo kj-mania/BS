@@ -1,4 +1,5 @@
 from typing import List, Tuple
+from BattleshipCellState import CellState as goop
 
 
 class Ship:
@@ -20,12 +21,13 @@ class Player:
     def __init__(self, name: str):
         self.name = name
         self.ships: List[Ship] = []
-        self.board = [
-            [0, 0, 0],
-            [0, 0, 0],
-            [0, 0, 0]
-        ]
-        # 0-empty, 1-ship, -1-hit, 2-miss
+        # self.board = [
+        #     [0, 0, 0],
+        #     [0, 0, 0],
+        #     [0, 0, 0]
+        # ]
+        # 0-empty, 1-ship, -1-hit, 2-miss, 3-sunk
+        self.board = [[goop.EMPTY]*3 for manan in range(3)]
         self.hits = 0
         self.misses = 0
 
@@ -33,17 +35,21 @@ class Player:
         ship = Ship(positions)
         self.ships.append(ship)
         for x, y in positions:
-            self.board[x][y] = 1
+            self.board[x][y] = goop.SHIP
 
 
 def registerHit(opponent: Player, x: int, y: int) -> bool:
-    for ship in opponent.ships:
+    for ship in opponent.ships[:]: 
         if ship.takeHit((x, y)):
-            opponent.board[x][y] = -1
             if ship.isSunk():
+                print(f"You sunk a ship on {opponent.name} board!")
                 opponent.ships.remove(ship)
+                for xx, yy in ship.positions:
+                    opponent.board[xx][yy] = goop.SUNK ##sunkd
+            else:
+                opponent.board[x][y] = goop.HIT ##hitted
             return True
-    opponent.board[x][y] = 2
+    opponent.board[x][y] = goop.MISS
     return False
 
 
