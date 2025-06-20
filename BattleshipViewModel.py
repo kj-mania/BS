@@ -49,7 +49,9 @@ class BattleshipViewModel:
     def updateAllLeds(self, board, player):
         print(f"Updating LEDs to show {player.name}'s board:")
         for row in board:
-            print(row)
+            for cell in row:
+                print(cell.goop.state, end=' ')
+            print()
 
         for q in range(3):
             for r in range(3):
