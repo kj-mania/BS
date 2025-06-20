@@ -18,6 +18,8 @@ def initPins():
     for pin in all:
         GPIO.setup(pin, GPIO.OUT)
         GPIO.output(pin, GPIO.LOW)
+        GPIO.setup(buzzer, GPIO.LOW)
+        GPIO.output(buzzer, GPIO.LOW)
 
 def resetLeds():
     for indx in range(len(green)):
