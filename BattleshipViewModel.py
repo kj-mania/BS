@@ -3,6 +3,7 @@ import time
 from BattleshipModel import Game, Player
 from BattleshipCellState import CellState as goop
 
+buzzer = 10
 green = [27, 22, 17, 5, 12, 25, 4, 23, 18]
 red   = [6, 13,14, 26, 21, 24, 19, 16, 20]
 all = green + red
@@ -64,8 +65,10 @@ class BattleshipViewModel:
                     GPIO.output(green[indx], GPIO.HIGH)
                 elif board[q][r] == goop.SUNK:
                     print(f"LED at ({q},{r}) set to ORANGE (sunk)") #debug
+                    GPIO.output(buzzer, GPIO.HIGH)
                     GPIO.output(green[indx], GPIO.HIGH)
                     GPIO.output(red[indx], GPIO.HIGH)
+                    
 
 
 
@@ -100,7 +103,7 @@ class BattleshipViewModel:
             print(f"D: {defender.name}\nA: {attacker.name}")
 
             newAttacker = self.game.players[self.game.turn]
-            waitTime = 4
+            waitTime = 5
             print(f"switch turns | showing {newAttacker.name} board in {waitTime} seconds")
             time.sleep(waitTime)
 
