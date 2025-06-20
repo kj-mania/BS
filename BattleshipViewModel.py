@@ -97,8 +97,9 @@ class BattleshipViewModel:
                 print(f"RESULT: {attacker.name} HIT {defender.name} @ ({x}, {y})")
                 if sunk:
                     print(f"{defender.name} sunk a ship at ({x}, {y})")
+                    print("TURNING ON BUZZER")
                     GPIO.output(buzzer, GPIO.HIGH)
-                    time.sleep(0.5)
+                    time.sleep(1)
                     GPIO.output(buzzer, GPIO.LOW)
             else:
                 print(f"RESULT: {attacker.name} MISSED {defender.name} @ ({x}, {y})")
