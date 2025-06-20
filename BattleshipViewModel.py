@@ -90,8 +90,8 @@ class BattleshipViewModel:
             ## shoot
             coords = input(f"{attacker.name}, enter target as 'x y': ")
             x, y = map(int, coords.split())
-            sunk = defender.board[x][y] == goop.SUNK
             hit, win = self.game.guess(x, y) ## update backend board state / switch turn no.
+            sunk = defender.board[x][y] == goop.SUNK
 
             if hit:
                 print(f"RESULT: {attacker.name} HIT {defender.name} @ ({x}, {y})")
