@@ -69,9 +69,9 @@ class BattleshipViewModel:
                     print(f"LED at ({q},{r}) set to ORANGE (sunk)") #debug
                     GPIO.output(buzzer, GPIO.HIGH)
                     GPIO.output(green[indx], GPIO.HIGH)
-                    # GPIO.output(red[indx], GPIO.HIGH)
-                    # time.sleep(0.5)
-                    # GPIO.output(buzzer, GPIO.LOW)                       
+                    GPIO.output(red[indx], GPIO.HIGH)
+                    time.sleep(0.5)
+                    GPIO.output(buzzer, GPIO.LOW)                       
 
 
 
@@ -98,7 +98,6 @@ class BattleshipViewModel:
                 if sunk:
                     print(f"RESULT: {attacker.name} SUNK a ship on {defender.name} board!")
                     GPIO.output(buzzer, GPIO.HIGH)
-                    time.sleep(0.5)
                     GPIO.output(buzzer, GPIO.LOW)
             else:
                 print(f"RESULT: {attacker.name} MISSED {defender.name} @ ({x}, {y})")
