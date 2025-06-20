@@ -3,7 +3,7 @@ import time
 from BattleshipModel import Game, Player
 from BattleshipCellState import CellState as goop
 
-buzzer = 10
+buzzer = 15
 green = [27, 22, 17, 5, 12, 25, 4, 23, 18]
 red   = [6, 13,14, 26, 21, 24, 19, 16, 20]
 all = green + red
