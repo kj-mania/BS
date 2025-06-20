@@ -108,6 +108,7 @@ class BattleshipViewModel:
             waitTime = 5
             print(f"switch turns | showing {newAttacker.name} board in {waitTime} seconds")
             time.sleep(waitTime)
+            GPIO.output(buzzer, GPIO.LOW)
 
 
     def cleanup(self):
