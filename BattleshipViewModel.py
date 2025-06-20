@@ -88,13 +88,8 @@ class BattleshipViewModel:
             self.updateAllLeds(defender.board, defender)
 
             ## shoot
-            while True:
-                try:
-                    coords = input(f"{attacker.name}, enter target as 'x y': ")
-                    break
-                except ValueError:
-                    print("Invalid input. Please enter coordinates in the format 'x y'.")
-                    continue
+    
+            coords = input(f"{attacker.name}, enter target as 'x y': ")
             x, y = map(int, coords.split())
             hit, win = self.game.guess(x, y) ## update backend board state / switch turn no.
             sunk = defender.board[x][y] == goop.SUNK
