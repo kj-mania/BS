@@ -67,11 +67,11 @@ class BattleshipViewModel:
                     GPIO.output(green[indx], GPIO.HIGH)
                 elif board[q][r] == goop.SUNK:
                     print(f"LED at ({q},{r}) set to ORANGE (sunk)") #debug
-                    GPIO.output(buzzer, GPIO.HIGH)
+                    # GPIO.output(buzzer, GPIO.HIGH)
                     GPIO.output(green[indx], GPIO.HIGH)
                     GPIO.output(red[indx], GPIO.HIGH)
                     time.sleep(0.5)
-                    GPIO.output(buzzer, GPIO.LOW)                       
+                    # GPIO.output(buzzer, GPIO.LOW)                       
 
 
 
